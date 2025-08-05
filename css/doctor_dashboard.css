@@ -1,0 +1,51 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f8f9fa;
+    color: #333;
+    padding: 40px;
+    margin: 0;
+}
+
+.dashboard-container {
+    max-width: 900px;
+    margin: auto;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    color: #23cba7;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th, table td {
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: left;
+}
+
+table th {
+    background-color: #23cba7;
+    color: white;
+}
+
+
+.edit-profile-btn {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: #23cba7;
+    color: white;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.edit-profile-btn:hover {
+    background-color: #1ea98d;
+}
