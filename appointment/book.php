@@ -143,7 +143,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   <div class="container">
     <div class="appointments-link">
-      <a href="healthcare_system/appointment/my_appointments.php">📅 My Appointments</a>
+      <a href="../appointment/my_appointments.php">📅 My Appointments</a>
     </div>
 
     <h2>Book Appointment</h2>

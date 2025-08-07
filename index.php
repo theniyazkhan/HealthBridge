@@ -1,6 +1,5 @@
 <?php
 session_start();
-include 'includes/header.php';
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header("Location: login.php");
     exit();
@@ -19,7 +18,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
         <p>Welcome, <?php echo $_SESSION['user']['name']; ?>!</p>
         <ul>
             <li><a href="appointment/admin.php">Medical Appointment System</a></li>
-            <li><a href="blood/blood_admin.php">Blood Donation System</a></li>
+            <li><a href="blood_donation/blood_admin.php">Blood Donation System</a></li>
             <li><a href="pharmacy/admin_panel.php">Pharmacy Management System</a></li>
         </ul>
         <br>
@@ -27,5 +26,3 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     </div>
 </body>
 </html>
-
-<?php include 'includes/footer.php'; ?>

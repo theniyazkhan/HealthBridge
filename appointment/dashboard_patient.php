@@ -115,7 +115,7 @@
     <h3>Request Blood</h3>
   </div>
 
-  <div class="feature" onclick="window.location.href='../pharmacy/pharmacy_home.php'">
+  <div class="feature" onclick="window.location.href='../pharmacy/search_medicine.php'">
     <img src="../images/pharmacy-icon.png" alt="Pharmacy">
     <h3>Pharmacy</h3>
   </div>
