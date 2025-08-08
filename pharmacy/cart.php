@@ -188,6 +188,35 @@ VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?, ?, ?, ?)");
             text-decoration: none;
             color: #0077cc;
         }
+        #bkashFields {
+        margin-top: 15px;
+        padding: 15px;
+        background: white;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 400px; /* Matches form width in admin_panel.php */
+    }
+
+    #bkashFields label {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    #bkashFields label span {
+        flex: 0 0 120px; /* Fixed width for label text */
+        font-weight: bold;
+        color: #333;
+        padding-right: 10px; /* Increased gap after colon */
+    }
+
+    #bkashFields input[type="text"] {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+    }
     </style>
 </head>
 
@@ -225,9 +254,10 @@ VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?, ?, ?, ?)");
         <label><input type="radio" name="payment_method" value="bKash" onchange="showPaymentFields()"> bKash</label><br>
 
         <div id="bkashFields" style="display: none;">
-            <label>bKash Number: <input type="text" name="bkash_number"></label><br>
-            <label>Transaction ID: <input type="text" name="bkash_txn"></label><br><br>
+            <label><span>bKash Number:</span> <input type="text" name="bkash_number"></label>
+            <label><span>Transaction ID:</span> <input type="text" name="bkash_txn"></label>
         </div>
+        
         <h3>Delivery Info:</h3>
         <p><strong>Name:</strong> <?= htmlspecialchars($_SESSION['user']['name']) ?></p>
         <p><strong>Phone:</strong> <?= htmlspecialchars($_SESSION['user']['phone']) ?></p>
