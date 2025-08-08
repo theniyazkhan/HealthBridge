@@ -5,7 +5,7 @@ if (!isset($_SESSION['user']) || !in_array($_SESSION['user']['role'], ['admin', 
     exit();
 }
 ?>
-
+hello world
 <?php
 session_start();
 $conn = new mysqli("localhost", "root", "", "healthcare_db");
