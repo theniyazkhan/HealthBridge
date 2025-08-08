@@ -24,6 +24,24 @@ if (isset($_GET['reduce'])) {
     header("Location: cart.php");
     exit;
 }
+// Handle Add Item
+if (isset($_GET['add'])) {
+    $add_id = $_GET['add'];
+    if (isset($_SESSION['cart'][$add_id])) {
+        // Check stock before incrementing
+        $stmt = $conn->prepare("SELECT stock FROM medicines WHERE id = ?");
+        $stmt->bind_param("i", $add_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $medicine = $result->fetch_assoc();
+        
+        if ($medicine && $_SESSION['cart'][$add_id] < $medicine['stock']) {
+            $_SESSION['cart'][$add_id]++;
+        }
+    }
+    header("Location: cart.php");
+    exit;
+}
 
 if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
     echo "<h2>Your cart is empty.</h2>";
@@ -51,9 +69,9 @@ while ($row = $result->fetch_assoc()) {
 // Handle order confirmation
 if ($_SERVER['REQUEST_METHOD'] === "POST" && isset($_POST['confirm_order'])) {
     $delivery_name = $_SESSION['user']['name'];   // From session
-$delivery_phone = $_SESSION['user']['phone']; // From session
-$delivery_address = $_POST['delivery_address']; // From form
-$delivery_city = $_POST['delivery_city'];       // From form
+    $delivery_phone = $_SESSION['user']['phone']; // From session
+    $delivery_address = $_POST['delivery_address']; // From form
+    $delivery_city = $_POST['delivery_city'];       // From form
 
     $payment_method = $_POST['payment_method'];
     $bkash_number = $_POST['bkash_number'] ?? null;
@@ -80,18 +98,19 @@ $delivery_city = $_POST['delivery_city'];       // From form
 delivery_name, delivery_phone, delivery_address, delivery_city)
 VALUES (?, ?, ?, ?, ?, ?, CURDATE(), ?, ?, ?, ?)");
 
-$stmt->bind_param("iiisssssss", 
-    $user_id,
-    $med['id'],
-    $med['quantity'],
-    $payment_method,
-    $bkash_number,
-    $bkash_txn,
-    $delivery_name,
-    $delivery_phone,
-    $delivery_address,
-    $delivery_city
-);
+            $stmt->bind_param(
+                "iiisssssss",
+                $user_id,
+                $med['id'],
+                $med['quantity'],
+                $payment_method,
+                $bkash_number,
+                $bkash_txn,
+                $delivery_name,
+                $delivery_phone,
+                $delivery_address,
+                $delivery_city
+            );
 
 
             $stmt->execute();
@@ -107,7 +126,6 @@ $stmt->bind_param("iiisssssss",
         echo "<h2>Order placed successfully using <strong>" . htmlspecialchars($payment_method) . "</strong>!</h2>";
         echo "<a href='search_medicine.php'>Back to Pharmacy</a>";
         exit;
-
     } catch (Exception $e) {
         $conn->rollback();
         echo "<h3>Error: " . $e->getMessage() . "</h3>";
@@ -119,76 +137,119 @@ $stmt->bind_param("iiisssssss",
 
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Cart - HealthBridge</title>
     <style>
-        body { font-family: Arial; margin: 30px; background: #f4f4f4; }
-        table { width: 100%; background: white; border-collapse: collapse; margin-bottom: 20px; }
-        th, td { border: 1px solid #ccc; padding: 12px; text-align: center; }
-        th { background: #0077cc; color: white; }
-        h2 { color: #333; }
-        .total { font-size: 20px; text-align: right; margin-bottom: 20px; }
-        button { padding: 10px 20px; background: green; color: white; border: none; cursor: pointer; }
-        a { text-decoration: none; color: #0077cc; }
+        body {
+            font-family: Arial;
+            margin: 30px;
+            background: #f4f4f4;
+        }
+
+        table {
+            width: 100%;
+            background: white;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background: #0077cc;
+            color: white;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .total {
+            font-size: 20px;
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0077cc;
+        }
     </style>
 </head>
+
 <body>
 
-<h2>Your Cart</h2>
-<table>
-    <tr>
-        <th>Medicine Name</th>
-        <th>Price</th>
-        <th>Quantity</th>
-        <th>Subtotal</th>
-    </tr>
-    <?php foreach ($medicines as $med): ?>
-    <tr>
-        <td><?= htmlspecialchars($med['name']) ?></td>
-        <td>৳<?= $med['price'] ?></td>
-        <td>
-            <?= $med['quantity'] ?>
-            <a href="?reduce=<?= $med['id'] ?>" style="margin-left:10px; color:orange;">[-]</a>
-            <a href="?remove=<?= $med['id'] ?>" style="margin-left:10px; color:red;">[Remove]</a>
-        </td>
-        <td>৳<?= number_format($med['subtotal'], 2) ?></td>
-    </tr>
-<?php endforeach; ?>
+    <h2>Your Cart</h2>
+    <table>
+        <tr>
+            <th>Medicine Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+        <?php foreach ($medicines as $med): ?>
+            <tr>
+                <td><?= htmlspecialchars($med['name']) ?></td>
+                <td>৳<?= $med['price'] ?></td>
+                <td>
+                    <?= $med['quantity'] ?>
+                    <a href="?add=<?= $med['id'] ?>" style="margin-left:10px; color:green;">[+]</a>
+                    <a href="?reduce=<?= $med['id'] ?>" style="margin-left:10px; color:orange;">[-]</a>
+                    <a href="?remove=<?= $med['id'] ?>" style="margin-left:10px; color:red;">[Remove]</a>
+                </td>
+                <td>৳<?= number_format($med['subtotal'], 2) ?></td>
+            </tr>
+        <?php endforeach; ?>
 
-</table>
+    </table>
 
-<div class="total"><strong>Total: ৳<?= number_format($total, 2) ?></strong></div>
+    <div class="total"><strong>Total: ৳<?= number_format($total, 2) ?></strong></div>
 
-<form method="POST">
-    <h3>Select Payment Method:</h3>
-    <label><input type="radio" name="payment_method" value="Cash on Delivery" required onchange="showPaymentFields()"> Cash on Delivery</label><br>
-    <label><input type="radio" name="payment_method" value="bKash" onchange="showPaymentFields()"> bKash</label><br>
+    <form method="POST">
+        <h3>Select Payment Method:</h3>
+        <label><input type="radio" name="payment_method" value="Cash on Delivery" required onchange="showPaymentFields()"> Cash on Delivery</label><br>
+        <label><input type="radio" name="payment_method" value="bKash" onchange="showPaymentFields()"> bKash</label><br>
 
-    <div id="bkashFields" style="display: none;">
-        <label>bKash Number: <input type="text" name="bkash_number"></label><br>
-        <label>Transaction ID: <input type="text" name="bkash_txn"></label><br><br>
-    </div>
-<h3>Delivery Info:</h3>
-<p><strong>Name:</strong> <?= htmlspecialchars($_SESSION['user']['name']) ?></p>
-<p><strong>Phone:</strong> <?= htmlspecialchars($_SESSION['user']['phone']) ?></p>
+        <div id="bkashFields" style="display: none;">
+            <label>bKash Number: <input type="text" name="bkash_number"></label><br>
+            <label>Transaction ID: <input type="text" name="bkash_txn"></label><br><br>
+        </div>
+        <h3>Delivery Info:</h3>
+        <p><strong>Name:</strong> <?= htmlspecialchars($_SESSION['user']['name']) ?></p>
+        <p><strong>Phone:</strong> <?= htmlspecialchars($_SESSION['user']['phone']) ?></p>
 
-    <h3>Delivery Address:</h3>
-<label>Address: <textarea name="delivery_address" required></textarea></label><br>
-<label>City: <input type="text" name="delivery_city" required></label><br><br>
+        <h3>Delivery Address:</h3>
+        <label>Address: <textarea name="delivery_address" required></textarea></label><br>
+        <label>City: <input type="text" name="delivery_city" required></label><br><br>
 
-    <button type="submit" name="confirm_order">Confirm Order</button>
-</form>
+        <button type="submit" name="confirm_order">Confirm Order</button>
+    </form>
 
-<script>
-function showPaymentFields() {
-    const method = document.querySelector('input[name="payment_method"]:checked').value;
-    document.getElementById('bkashFields').style.display = (method === 'bKash') ? 'block' : 'none';
-}
-</script>
+    <script>
+        function showPaymentFields() {
+            const method = document.querySelector('input[name="payment_method"]:checked').value;
+            document.getElementById('bkashFields').style.display = (method === 'bKash') ? 'block' : 'none';
+        }
+    </script>
 
 
 
-<p><a href="search_medicine.php">← Back to Search</a></p>
+    <p><a href="search_medicine.php">← Back to Search</a></p>
 
 </body>
+
 </html>
