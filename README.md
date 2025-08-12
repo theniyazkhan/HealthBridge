@@ -2,10 +2,10 @@
 
 Author: Team HealthBridge
 Team Members (Full-Stack Contribution)
-• Eshrath Jahan Esha — User Register & Login, Full Module — ID: 231-115-041
-• Md. Abu Hasan — Blood Donation, Full Module — ID: 231-115-048
-• Niyaz Ahmad Khan — User & Admin Dashboard, Medical Appointment, Full Module — ID: 231-115-052
-• Shahriar Najim — Pharmacy Management & Marketplace, Full Module — ID: 231-115-078
+- Eshrath Jahan Esha — User Register & Login, Full Module — ID: 231-115-041
+- Md. Abu Hasan — Blood Donation, Full Module — ID: 231-115-048
+- Niyaz Ahmad Khan — User & Admin Dashboard, Medical Appointment, Full Module — ID: 231-115-052
+- Shahriar Najim — Pharmacy Management & Marketplace, Full Module — ID: 231-115-078
 Section: B
 Batch: 58th
 
