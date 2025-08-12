@@ -151,6 +151,19 @@ http://localhost/healthcare_system/
 - Login Page
 ![image alt](https://github.com/theniyazkhan/HealthBridge/blob/e974c618806b2b416db036a6139a374372110b6a/login.jpg)
 
+- Dashboard
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/4a4ee4d79089da4cf3c98bc4eebec2818606abcd/Main%20Panel.jpg)
+
+- Login Page
+![image alt]
+
+- Login Page
+![image alt]
+
+- Login Page
+![image alt]
+
+
 
 👨‍💻 Tech Stack
 Frontend: HTML5, CSS3, JavaScript
