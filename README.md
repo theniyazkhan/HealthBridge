@@ -141,6 +141,9 @@ Visit:
 http://localhost/healthcare_system/
 
 🖼️ Screenshots
+- Register
+![image alt]()
+
 - ER Diagram
 ![image alt](https://github.com/theniyazkhan/HealthBridge/blob/12c92fe9b43e95ce6146bba9b50ef74dfc92c5c4/ER%20Diagram.png)
 
