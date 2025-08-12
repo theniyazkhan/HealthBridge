@@ -161,9 +161,34 @@ http://localhost/healthcare_system/
 ![image alt](https://github.com/theniyazkhan/HealthBridge/blob/645b37b3fb488d6b5be89ac64c6144d1c19ccb3e/Register_blood.jpg)
 
 - Available Blood Donor
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/61847444fcbf4f0816735893a11c43e585810daf/Available_Donors.jpg)
+
+- Pharmacy
 ![image alt]()
 
+- Pharmacy Cart
+![image alt]()
 
+- Admin Dashboard
+![image alt]()
+
+- Doctor Dashboard
+![image alt]()
+
+- Available Blood Donor
+![image alt]()
+
+- Available Blood Donor
+![image alt]()
+
+- Blood Donation Admin
+![image alt]()
+
+- Blood Donation Admin
+![image alt]()
+
+- Pharmacy Admin
+![image alt]()
 
 👨‍💻 Tech Stack
 Frontend: HTML5, CSS3, JavaScript
