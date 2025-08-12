@@ -181,20 +181,15 @@ http://localhost/healthcare_system/
 - Edit Appoinment
 ![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/edit_appoinment.jpg)
 
-- Available Blood Donor
-![image alt]()
 
-- Available Blood Donor
-![image alt]()
+- Blood Donation Admin (Here admin can also add donor)
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/0133b6e8a39a6e07179f7b02179a50cad5db3952/Blood_Admin%201.jpg)
 
-- Blood Donation Admin
-![image alt]()
-
-- Blood Donation Admin
-![image alt]()
+- Blood Donation Admin (Here admin can approve or reject blood request)
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/0133b6e8a39a6e07179f7b02179a50cad5db3952/Blood_Admin2.jpg)
 
 - Pharmacy Admin
-![image alt]()
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/0133b6e8a39a6e07179f7b02179a50cad5db3952/Pharmacy_Admin.jpg)
 
 👨‍💻 Tech Stack
 Frontend: HTML5, CSS3, JavaScript
