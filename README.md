@@ -164,16 +164,22 @@ http://localhost/healthcare_system/
 ![image alt](https://github.com/theniyazkhan/HealthBridge/blob/61847444fcbf4f0816735893a11c43e585810daf/Available_Donors.jpg)
 
 - Pharmacy
-![image alt]()
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/Pharmacy.jpg)
 
 - Pharmacy Cart
-![image alt]()
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/Pharmacy_cart.jpg)
 
 - Admin Dashboard
-![image alt]()
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/all_Adminmodule.jpg)
 
 - Doctor Dashboard
-![image alt]()
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/Doctor_dashboard.jpg)
+
+- Doctor info update
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/Doctor_dashboard%202.jpg)
+
+- Edit Appoinment
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/edit_appoinment.jpg)
 
 - Available Blood Donor
 ![image alt]()
