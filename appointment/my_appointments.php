@@ -2,35 +2,58 @@
 session_start();
 include '../includes/db.php';
 
-// Check if user is logged in
-if (!isset($_SESSION['user_id'])) {
-    header("Location: ../login.php");
-    exit();
-}
+// if (!isset($_SESSION['user_id'])) {
+//     header("Location: ../login.php");
+//     exit();
+// }
 
 $user_id = $_SESSION['user_id'];
 
-// Fetch appointments joined with doctors and user info
-$sql = "SELECT a.appointment_id, a.appointment_date, a.status,
-               d.name AS doctor_name, d.specialization,
-               u.name AS user_name
-        FROM appointments a
-        JOIN doctors d ON a.doctor_id = d.doctor_id
-        JOIN users u ON a.user_id = u.user_id
-        WHERE a.user_id = ?
-        ORDER BY a.appointment_date DESC";
-
-$stmt = $conn->prepare($sql);
+// Check if user is patient
+$patient_query = "SELECT patient_id FROM patients WHERE user_id = ?";
+$stmt = $conn->prepare($patient_query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
+$patient_result = $stmt->get_result();
+
+if ($patient_row = $patient_result->fetch_assoc()) {
+    $patient_id = $patient_row['patient_id'];
+    $sql = "SELECT a.*, u.name AS doctor_name
+            FROM appointments a
+            JOIN doctors d ON a.doctor_id = d.doctor_id
+            JOIN users u ON d.user_id = u.user_id
+            WHERE a.patient_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $patient_id);
+} else {
+    // User is doctor
+    $doctor_query = "SELECT doctor_id FROM doctors WHERE user_id = ?";
+    $stmt = $conn->prepare($doctor_query);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $doctor_result = $stmt->get_result();
+    $doctor_row = $doctor_result->fetch_assoc();
+    $doctor_id = $doctor_row['doctor_id'];
+
+    $sql = "SELECT a.*, u.name AS patient_name
+            FROM appointments a
+            JOIN patients p ON a.patient_id = p.patient_id
+            JOIN users u ON p.user_id = u.user_id
+            WHERE a.doctor_id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $doctor_id);
+}
+
+$stmt->execute();
 $result = $stmt->get_result();
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
     <title>My Appointments</title>
-    <link rel="stylesheet" href="../css/blood.css">
+    <link rel="stylesheet" href="../css/doctor_dashboard.css">
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

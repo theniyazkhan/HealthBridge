@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <select name="role" required>
         <option value="patient">Patient</option>
         <option value="doctor">Doctor</option>
-        <option value="pharmacist">Pharmacist</option>
+        <!-- <option value="pharmacist">Pharmacist</option> -->
         <option value="admin">Admin</option>
       </select><br><br>
       <button type="submit">Register</button>

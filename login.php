@@ -48,8 +48,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
   <title>Login</title>
    <link rel="stylesheet" href="style.css">
+   <style>
+   </style>
 </head>
 <body>
+    <!-- <div class="site-title">
+        HealthBridge
+    </div> -->
     <div class="log_container">
         <h2 class="log_heading">Login</h2>
         <form method="POST" action="">

@@ -7,28 +7,27 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'patient') {
     header("Location: ../login.php");
     exit();
 }
-// Add Donor
+// Add donor
 if (isset($_POST['add_donor'])) {
     $name = $_POST['name'];
     $phone = $_POST['phone'];
     $address = $_POST['address'];
     $blood_group_id = $_POST['blood_group'];
+    $last_donation_date = !empty($_POST['last_donation_date']) ? $_POST['last_donation_date'] : NULL;
     $image = "uploads/" . basename($_FILES["image"]["name"]);
     move_uploaded_file($_FILES["image"]["tmp_name"], $image);
 
-    $conn->query("INSERT INTO donors (name, image, phone, address, blood_group_id, approved) 
-                  VALUES ('$name', '$image', '$phone', '$address', '$blood_group_id', 1)");
+    $stmt = $conn->prepare("INSERT INTO donors (name, image, phone, address, blood_group_id, last_donation_date, approved) VALUES (?, ?, ?, ?, ?, ?, 1)");
+    $stmt->bind_param("ssssss", $name, $image, $phone, $address, $blood_group_id, $last_donation_date);
+    $stmt->execute();
 }
-
-// Fetch Data
+// Fetch data
 $blood_groups = $conn->query("SELECT * FROM blood_groups");
-$pending_donors = $conn->query("SELECT donors.id, donors.name, donors.phone, donors.address, blood_groups.name AS blood_group 
-                                FROM donors JOIN blood_groups ON donors.blood_group_id = blood_groups.id 
-                                WHERE donors.approved = 0");
-$blood_requests = $conn->query("SELECT requests.id, requester_name, phone, address, blood_groups.name AS blood_group, status 
-                                FROM requests JOIN blood_groups ON requests.blood_group_id = blood_groups.id
-                                ORDER BY requests.id DESC");
+$pending_donors = $conn->query("SELECT donors.*, blood_groups.name AS blood_group FROM donors JOIN blood_groups ON donors.blood_group_id = blood_groups.id WHERE donors.approved = 0");
+$donors_list = $conn->query("SELECT donors.*, blood_groups.name AS blood_group FROM donors JOIN blood_groups ON donors.blood_group_id = blood_groups.id WHERE donors.approved = 1");
+$blood_requests = $conn->query("SELECT r.*, bg.name AS blood_group, d.name AS donor_name, d.phone AS donor_phone FROM requests r JOIN blood_groups bg ON r.blood_group_id = bg.id LEFT JOIN donors d ON r.donor_id = d.id ORDER BY r.id DESC");
 ?>
+
 
 <!DOCTYPE html>
 <html>
@@ -66,6 +65,8 @@ $blood_requests = $conn->query("SELECT requests.id, requester_name, phone, addre
             <?php } ?>
         </select>
         <input type="file" name="image" accept="image/*" required>
+        <label>Last Donation Date:</label>
+        <input type="date" name="last_donation_date">
         <button type="submit" name="add_donor">Add Donor</button>
     </form>
 </div>

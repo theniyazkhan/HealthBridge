@@ -1,7 +1,7 @@
 <?php
 session_start();
 ?>
-<nav>
+<!-- <nav>
     <?php if (isset($_SESSION['user'])): ?>
         <div class="head_top">
         <span >Welcome to our Pharmacy </span> 
@@ -11,7 +11,7 @@ session_start();
     <?php else: ?>
         <a href="../login.php">Login</a>
     <?php endif; ?>
-</nav>
+</nav> -->
 
 <?php
 include '../includes/db.php';
@@ -56,6 +56,8 @@ $medicines = $conn->query("SELECT * FROM medicines $search_sql");
         .card form { margin-top: 10px; }
         .card button { background: #28a745; color: white; border: none; padding: 8px 12px; cursor: pointer; }
         .head_top {background: #0c94a0ff; color: white; border: none; padding: 8px 12px; cursor: pointer;}
+        .home_btn {display: inline-block;padding: 5px 12px;color: white;border-radius: 5px;transition: background 0.3s ease;}
+        .home_btn:hover {background-color: #1ea98d;}
     </style>
 </head>
 <body>
@@ -69,8 +71,9 @@ $medicines = $conn->query("SELECT * FROM medicines $search_sql");
         </form>
     </div>
     <nav>
-        <a href="../appointment/dashboard_patient.php">Home </a>
-        <a href="cart.php">Cart (<?= count($_SESSION['cart']) ?>)</a>
+        <a class="home_btn" href="../appointment/dashboard_patient.php">Home </a>
+        <a class="home_btn" href="cart.php">Cart (<?= count($_SESSION['cart']) ?>)</a>
+        <a class="home_btn" href="../logout.php">Logout</a>
     </nav>
 </header>
 
