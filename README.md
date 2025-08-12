@@ -173,10 +173,10 @@ http://localhost/healthcare_system/
 ![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/all_Adminmodule.jpg)
 
 - Doctor Dashboard
-![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/Doctor_dashboard.jpg)
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/Doctor_dashboard%202.jpg)
 
 - Doctor info update
-![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/Doctor_dashboard%202.jpg)
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/Doctor_dashboard.jpg)
 
 - Edit Appoinment
 ![image alt](https://github.com/theniyazkhan/HealthBridge/blob/ddc829784757772998e66be7451e167223a01c36/edit_appoinment.jpg)
