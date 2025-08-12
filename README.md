@@ -141,7 +141,7 @@ Visit:
 http://localhost/healthcare_system/
 
 🖼️ Screenshots
-(Add screenshots of home page, dashboards, and forms)
+https://github.com/theniyazkhan/HealthBridge/blob/12c92fe9b43e95ce6146bba9b50ef74dfc92c5c4/ER%20Diagram.png
 
 👨‍💻 Tech Stack
 Frontend: HTML5, CSS3, JavaScript
