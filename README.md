@@ -154,14 +154,14 @@ http://localhost/healthcare_system/
 - Dashboard
 ![image alt](https://github.com/theniyazkhan/HealthBridge/blob/4a4ee4d79089da4cf3c98bc4eebec2818606abcd/Main%20Panel.jpg)
 
-- Login Page
-![image alt]
+- Book Appoinment
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/5b1636d476b4aba325527c598fac74f2394daa48/Book_Appoinment%20.jpg)
 
-- Login Page
-![image alt]
+- Become a Donor page
+![image alt]()
 
-- Login Page
-![image alt]
+- Available Blood Donor
+![image alt]()
 
 
 
