@@ -157,8 +157,8 @@ http://localhost/healthcare_system/
 - Book Appoinment
 ![image alt](https://github.com/theniyazkhan/HealthBridge/blob/5b1636d476b4aba325527c598fac74f2394daa48/Book_Appoinment%20.jpg)
 
-- Become a Donor page
-![image alt]()
+- Register Blood Donor
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/645b37b3fb488d6b5be89ac64c6144d1c19ccb3e/Register_blood.jpg)
 
 - Available Blood Donor
 ![image alt]()
