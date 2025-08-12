@@ -141,11 +141,16 @@ Visit:
 http://localhost/healthcare_system/
 
 🖼️ Screenshots
-- Register Page
-![image alt](https://github.com/theniyazkhan/HealthBridge/blob/d250dd9363d9b59b4e6c1950864fc9c99a617ba8/Register.jpg)
 
 - ER Diagram
 ![image alt](https://github.com/theniyazkhan/HealthBridge/blob/12c92fe9b43e95ce6146bba9b50ef74dfc92c5c4/ER%20Diagram.png)
+
+- Register Page
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/d250dd9363d9b59b4e6c1950864fc9c99a617ba8/Register.jpg)
+
+- Login Page
+![image alt](https://github.com/theniyazkhan/HealthBridge/blob/e974c618806b2b416db036a6139a374372110b6a/login.jpg)
+
 
 👨‍💻 Tech Stack
 Frontend: HTML5, CSS3, JavaScript
