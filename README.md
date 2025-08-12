@@ -1,5 +1,13 @@
 # 🏥 Healthcare Management System
 
+Author: Team HealthBridge
+Team members (Full-Stack Contribution):
+User Register & Login, Full Module: Eshrath Jahan Esha, ID: (231-115-041) 
+Blood Donation, Full Module: Md.Abu Hasan, ID: (231-115-048)
+User & Admin Dashboard, Medical Appointment, Full Module: Niyaz Ahmad Khan, ID: (231-115-052)
+Pharmacy Management & Marketplace, Full Module: Shahriar Najim, ID: (231-115-078)
+Section: B, Batch: 58th
+
 A **full-stack healthcare web application** with three core modules:
 1. **Medical Appointment System**
 2. **Blood Donation System**
@@ -142,18 +150,5 @@ Database: MySQL
 Tools: XAMPP, phpMyAdmin
 
 📜 License
-All right reserved 
-
-🤝 Contribution
-Pull requests are welcome!
-For major changes, open an issue first to discuss your idea.
-
-📧 Contact
-Author: Team HealthBridge
-Team members:
-Eshrath Jahan Esha, ID: (231-115-041)
-Md.Abu Hasan, ID: (231-115-048)
-Niyaz Ahmad Khan, ID: (231-115-052)
-Shahriar Najim, ID: (231-115-078)
-Section: B, Batch: 58th
+© All right reserved 2025
 
